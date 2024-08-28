@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Cross-Sell Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Customer Response to Cross-Sell Offer</h2>
+        <form action="/predict" method="post">
+            <label for="age">Customer Age:</label>
+            <input type="text" name="age" required>
+
+            <label>Customer Gender:</label>
+            <div>
+                <input type="radio" name="gender" value="0" required> Female
+                <input type="radio" name="gender" value="1" required> Male
+            </div>
+
+            <label for="vehicle_age">Vehicle Age:</label>
+            <input type="text" name="vehicle_age" required>
+
+            <label>Has Insurance Coverage:</label>
+            <div>
+                <input type="radio" name="insurance_coverage" value="0" required> No
+                <input type="radio" name="insurance_coverage" value="1" required> Yes
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
